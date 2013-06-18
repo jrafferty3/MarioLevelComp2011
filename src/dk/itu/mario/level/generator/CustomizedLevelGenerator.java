@@ -7,6 +7,7 @@ import dk.itu.mario.MarioInterface.GamePlay;
 import dk.itu.mario.MarioInterface.LevelGenerator;
 import dk.itu.mario.MarioInterface.LevelInterface;
 import dk.itu.mario.level.CustomizedLevel;
+import dk.itu.mario.level.MyLevel;
 
 public class CustomizedLevelGenerator implements LevelGenerator{
 

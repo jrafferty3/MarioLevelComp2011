@@ -4,24 +4,32 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import geomario.util.Test;
+
 public class PlayCustomized {
 
-	public static void main(String[] args)
-     {
-		    	JFrame frame = new JFrame("Mario Experience Showcase");
-		    	MarioComponent mario = new MarioComponent(640, 480,true);
+    public static void main(String[] args)
+    {
+	if (args.length == 1) {
+	    if (args[0].equals("no-hazards")) {
+		Test.noHazards = true;
+	    }
+	}
 
-		    	frame.setContentPane(mario);
-		    	frame.setResizable(false);
-		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		        frame.pack();
+	JFrame frame = new JFrame("Mario Experience Showcase");
+	MarioComponent mario = new MarioComponent(640, 480,true);
 
-		        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		        frame.setLocation((screenSize.width-frame.getWidth())/2, (screenSize.height-frame.getHeight())/2);
+	frame.setContentPane(mario);
+	frame.setResizable(false);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.pack();
 
-		        frame.setVisible(true);
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	frame.setLocation((screenSize.width-frame.getWidth())/2, (screenSize.height-frame.getHeight())/2);
 
-		        mario.start();   
-	}	
+	frame.setVisible(true);
+
+	mario.start();   
+    }	
 
 }

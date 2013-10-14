@@ -81,7 +81,7 @@ public class GamePlay implements Serializable {
 			gp = (GamePlay)in.readObject();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return gp;
 	}

@@ -29,8 +29,7 @@ public class FileHandler {
             bufRead.close();
 			
         }catch (Exception e){
-			// If another exception is generated, print a stack trace
-            e.printStackTrace();
+
         }
         return info;
 	}

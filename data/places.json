@@ -1,0 +1,10 @@
+{
+  "atlanta": {
+    "latitude": _,
+    "longitude": _,
+    "population_density": _,
+    "per_capita_income": _,
+    "violent_crime": _,
+    "bodies_of_water": _ 
+  }
+}

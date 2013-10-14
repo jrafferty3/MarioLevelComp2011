@@ -12,34 +12,42 @@
     <!-- Create the time stamp -->
     <tstamp/>
     <!-- Create the build directory structure used by compile -->
-    <!--
-	<mkdir dir="${build}"/>
-    <copy todir="${build}/ch/idsia/mario/engine/resources">
-      <fileset dir="${src}/ch/idsia/mario/engine/resources">
+    <mkdir dir="${build}"/>
+    <copy todir="${build}/dk/itu/mario/res">
+      <fileset dir="${src}/dk/itu/mario/res">
         <exclude name="**/*.java"/>
       </fileset>
     </copy>
-    -->              
-                  
   </target>
 
   <target name="compile" depends="init"
         description="compile the source " >
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}">
+    <javac srcdir="${src}" destdir="${build}" debug="true" includeantruntime="false">
       <classpath>
-         <!-- 
 		 <fileset dir="${lib}">
            <include name="**/*.jar" />
          </fileset>
-		 -->
       </classpath>
     </javac>
   </target>
   <target name="play" depends="compile"
         description="tests Mario whether it works" >
     <!-- Create the distribution directory -->
-    <java classname="ch.idsia.scenarios.Play" dir="${build}" failonerror="false" fork="true">
+    <java classname="dk.itu.mario.engine.PlayCustomized" failonerror="false" fork="true">
+      <classpath>
+         <fileset dir="${lib}">
+           <include name="**/*.jar" />
+         </fileset>
+           <pathelement location="${build}" />
+      </classpath>
+    </java>
+  </target>
+  <target name="play-nohazards" depends="compile"
+        description="tests Mario whether it works" >
+    <!-- Create the distribution directory -->
+    <java classname="dk.itu.mario.engine.PlayCustomized" failonerror="false" fork="true">
+      <arg value="no-hazards" />
       <classpath>
          <fileset dir="${lib}">
            <include name="**/*.jar" />
@@ -49,10 +57,15 @@
     </java>
   </target>
 
+
   <target name="clean"
         description="clean up" >
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
+  </target>
+
+  <target name="squeakyclean" depends="clean">
+    <delete file="cache.db"/>
   </target>
 </project>

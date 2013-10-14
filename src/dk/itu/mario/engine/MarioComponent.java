@@ -86,6 +86,7 @@ public class MarioComponent extends JComponent implements Runnable, KeyListener,
 
 		    private void toggleKey(int keyCode, boolean isPressed)
 		    {
+			try {
 		        if (keyCode == KeyEvent.VK_LEFT)
 		        {
 		            scene.toggleKey(Mario.KEY_LEFT, isPressed);
@@ -126,6 +127,7 @@ public class MarioComponent extends JComponent implements Runnable, KeyListener,
 		        		System.out.println("Unable to exit.");
 		        	}
 		        }
+			} catch (NullPointerException npe) {}
 		    }
 
 		    public void paint(Graphics g){
